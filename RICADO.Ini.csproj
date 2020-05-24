@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>RICADO.Ini</PackageId>
+    <Version>1.1.0</Version>
+    <Authors />
+    <Company>RICADO Group LP</Company>
+    <Description>A Dot Net Library for handling INI Files</Description>
+    <Copyright>Copyright © RICADO Group LP 2009 - 2020</Copyright>
+    <RepositoryUrl>https://github.com/ricado-group/dotnet-ini</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>
