@@ -2,19 +2,21 @@ name: Publish to GitHub Packages
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*.*.*'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Publish on Version Change
-      id: publish_nuget
-      uses: rohith/publish-nuget@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
       with:
-        PROJECT_FILE_PATH: RICADO.Ini.csproj
-        TAG_COMMIT: true
-        NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-        NUGET_SOURCE: https://nuget.pkg.github.com/ricado-group/index.json
+        dotnet-version: 3.1.101
+    - name: Install Dependencies
+      run: dotnet restore
+    - name: Pack
+      run: dotnet build --configuration Release --no-restore
+    - name: Push
+      run: dotnet nuget push "bin/Release/RICADO.Ini.${{github.event.release.tag_name}}.nupkg" -s "https://nuget.pkg.github.com/ricado-group/index.json" -k ${{secrets.GITHUB_TOKEN}}
