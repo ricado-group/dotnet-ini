@@ -17,4 +17,4 @@ jobs:
         PROJECT_FILE_PATH: RICADO.Ini.csproj
         TAG_COMMIT: true
         NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-        NUGET_SOURCE: https://nuget.pkg.github.com/ricado-group
+        NUGET_SOURCE: https://nuget.pkg.github.com/ricado-group/index.json
